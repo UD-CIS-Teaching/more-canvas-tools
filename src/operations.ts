@@ -1,6 +1,8 @@
 import { ALWAYS, DOMCONTENTLOADED } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
+import { isOnPeoplePage } from "./canvas/page_checks";
 import { loadUserActivityReport } from "./reports/user_activity";
+import { injectLimitEnrollmentButton } from "./utilities/limit_enrollment";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
     operation({
@@ -11,6 +13,18 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
             loadUserActivityReport();
         },
         deferUntil: DOMCONTENTLOADED,
+    }),
+    operation({
+        description: "provide limit section enrollment button",
+        condition: () => isOnPeoplePage,
+        dependencies: {
+            addUserButton: "#addUsers"
+        },
+        action: (e) => {
+            console.log("HELLO EPOPLE", e);
+            injectLimitEnrollmentButton();
+        },
+        deferUntil: DOMCONTENTLOADED
     })
 ];
 

@@ -12,9 +12,10 @@ export function startDialog(title: string, body: string) {
     });
     $("#dialog").dialog("open");
     $('#dialog').html(body);
-
+    return $("#dialog");
 }
 
 export function loadDialog(data: any) {
     $('#dialog').html(data);
+    return $("#dialog");
 }

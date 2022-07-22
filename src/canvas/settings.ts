@@ -12,8 +12,8 @@ export function getCourse(): string {
     return (window as any).ENV.context_asset_string;
 }
 
-export function getCourseId(): string {
-    return getCourse().split("_")[1];
+export function getCourseId(): number {
+    return parseInt(getCourse().split("_")[1], 10);
 }
 
 export function getBaseUrl(): string {
@@ -26,6 +26,10 @@ export function getBaseApiUrl(): string {
 
 export function getBaseCourseUrl(): string {
     return getBaseApiUrl() + "courses/" + getCourseId();
+}
+
+export function getBaseCourseUrlNoApi(): string {
+    return getBaseUrl() + "/courses/" + getCourseId();
 }
 
 export type ParseSizes = { [key: string]: number };
@@ -132,37 +136,4 @@ export function makeLastWeek(): string {
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     return oneWeekAgo.toISOString();
     // YYYY-MM-DDTHH:MM:SSZ
-}
-
-
-export type User = {
-    id: number,
-    name: string
-};
-export type Assignment = {
-    id: number,
-    published: boolean
-}
-
-export enum WorkflowState {
-    submitted = "submitted",
-    unsubmitted = "unsubmitted",
-    graded = "graded",
-    pending_review = "pending_review"
-}
-
-export type Submission = {
-    id: number,
-    user: User,
-    assignment: Assignment,
-    submitted_at: string,
-    graded_at: string,
-    grader_id: number,
-    score: number,
-    workflow_state: WorkflowState,
-}
-
-export type SubmissionGroup = {
-    user_id: number,
-    submissions: Submission[]
 }

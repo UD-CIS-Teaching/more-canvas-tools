@@ -1,8 +1,8 @@
 import { startDialog, loadDialog } from "../canvas/dialog";
 import {
-    getAll, User, Assignment, SubmissionGroup, Submission,
-    makeLastWeek, ParseSizes, getAllBatched, CanvasRequestOptions, WorkflowState
+    getAll, makeLastWeek, ParseSizes, getAllBatched, CanvasRequestOptions
 } from "../canvas/settings";
+import {User, Assignment, SubmissionGroup, Submission, WorkflowState} from "../canvas/interfaces";
 
 const ACTIVITY_REPORT_BUTTON = `
 <li class='section'>

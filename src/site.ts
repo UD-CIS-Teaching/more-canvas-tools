@@ -4,3 +4,7 @@ import U from "./userscript";
 
 export const NAME = U.sitename;
 export const HOSTNAME = U.hostname;
+
+export const PATH = {
+    PEOPLE_PAGE: /courses\/\d+\/users/
+} as const;
