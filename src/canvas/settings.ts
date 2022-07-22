@@ -1,3 +1,5 @@
+import { SpeedGraderInfo, User } from "./interfaces";
+
 declare global {
     interface Window {
         ENV: CanvasEnv;
@@ -6,7 +8,9 @@ declare global {
 
 export interface CanvasEnv {
     context_asset_string: string;
-    DEEP_LINKING_POST_MESSAGE_ORIGIN: string
+    DEEP_LINKING_POST_MESSAGE_ORIGIN: string;
+    assignment_id: string;
+    assignment_title: string;
 }
 export function getCourse(): string {
     return (window as any).ENV.context_asset_string;
@@ -30,6 +34,14 @@ export function getBaseCourseUrl(): string {
 
 export function getBaseCourseUrlNoApi(): string {
     return getBaseUrl() + "/courses/" + getCourseId();
+}
+
+export function getSpeedGraderInfo(): SpeedGraderInfo {
+    return {
+        assignmentId: parseInt((window as any).ENV.assignment_id, 10),
+        assignmentTitle: (window as any).ENV.assignment_title,
+        currentUser: (window as any).ENV.current_user
+    };
 }
 
 export type ParseSizes = { [key: string]: number };
