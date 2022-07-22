@@ -8,4 +8,5 @@ export default {
     sitename: "Instructure",
     namespace: "udcis.canvas",
     runAt: "document-start",
+    grant: "none",
 } as const;

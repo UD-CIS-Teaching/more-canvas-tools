@@ -1,12 +1,15 @@
 {
   "private": true,
+  "homepage": "https://UD-CIS-Teaching.github.io/more-canvas-tools/",
   "scripts": {
     "build-webpack-config": "tsc -p tsconfig.webpack.json",
     "build-userscript": "webpack --config .userscripter-temp/webpack.config.js",
     "build": "npm run clean && npm run build-webpack-config && npm run build-userscript && npm run clean",
     "watch-userscript": "webpack --config .userscripter-temp/webpack.config.js --watch",
     "watch": "npm run clean && npm run build-webpack-config && npm run watch-userscript && npm run clean",
-    "clean": "rimraf .userscripter-temp"
+    "clean": "rimraf .userscripter-temp",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@typed/compose": "^1.0.0",
@@ -15,6 +18,7 @@
     "@types/jquery": "^3.5.14",
     "@types/jqueryui": "^1.12.16",
     "app-root-path": "^3.0.0",
+    "gh-pages": "^4.0.0",
     "jszip": "^3.10.0",
     "rimraf": "^3.0.2",
     "ts-preferences": "^2.0.0",

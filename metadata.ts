@@ -16,6 +16,8 @@ export default function(_: BuildConfig): Metadata {
         ],
         namespace: U.namespace,
         run_at: U.runAt,
-        grant: 'none'
+        grant: 'none',
+        updateURL: "https://ud-cis-teaching.github.io/more-canvas-tools/more-canvas-tools.user.js",
+        downloadURL: "https://ud-cis-teaching.github.io/more-canvas-tools/more-canvas-tools.user.js"
     };
 }
