@@ -1,3 +1,7 @@
+.awcache/
+.userscripter-temp/
+
+
 # Logs
 logs
 *.log
