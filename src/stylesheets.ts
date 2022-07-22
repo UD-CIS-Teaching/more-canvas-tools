@@ -5,10 +5,7 @@ const STYLESHEETS = {
     main: stylesheet({
         condition: ALWAYS,
         css: `
-            html body {
-                background-color: rgb(144, 238, 144) !important;
-                color: green !important;
-            }
+            
         `,
     }),
 } as const;
