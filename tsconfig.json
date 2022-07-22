@@ -4,6 +4,8 @@
         "paths": {
             "~src/*": [ "./src/*" ]
         },
+        "noImplicitAny": true,
+        "allowJs": true,
         "target": "es6",
         "strict": true,
         "module": "es2015",
@@ -16,7 +18,8 @@
             "dom"
         ],
         "jsx": "react",
-        "jsxFactory": "h"
+        "jsxFactory": "h",
+        "types": ["jquery", "jqueryui"]
     },
     "include": [
         "./src/*.d.ts",

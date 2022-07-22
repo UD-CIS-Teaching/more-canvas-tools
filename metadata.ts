@@ -16,5 +16,6 @@ export default function(_: BuildConfig): Metadata {
         ],
         namespace: U.namespace,
         run_at: U.runAt,
+        grant: 'none'
     };
 }
