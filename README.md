@@ -15,6 +15,14 @@ I develop on Chrome. I make no claims that it will work on anything else. It pro
 2. Visit the install link for the [Canvas-Web-Utils userscript](https://github.com/UD-CIS-Teaching/canvas-web-utils/raw/master/dist/canvas-web-utils.user.js).
 3. You should be prompted to install the extension, which you should do.
 
+# Features
+
+We are always working on new features, but here's what we have so far:
+
+1. [Activity Report](#activity-report): To quickly check recent completion data by students and TAs.
+2. [Limit Section](#limit-section-enrollment): For FERPA compliance.
+3. [Spread Grade](#spread-grade): A particular tool for the speedgrader that replicates grades to other group members (based on email addresses found in the submitted Word document). Mostly only for courses that use Word Documents.
+
 ## Activity Report
 
 The Activity Report allows you to check each student and TA for recent activity. In particular, it shows you students' recent and total submitted assignments, and staff's recent and total graded assignments. This can help you identify students who are not engaging, and TAs who are not staying on top of their duties.
