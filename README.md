@@ -12,8 +12,16 @@ I develop on Chrome. I make no claims that it will work on anything else. It pro
 # Installation
 
 1. Install [TamperMonkey extension](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) for Chrome.
-2. Visit the install link for the [Canvas-Web-Utils userscript](https://github.com/UD-CIS-Teaching/canvas-web-utils/raw/master/dist/canvas-web-utils.user.js).
+2. Visit the install link for the [More Canvas Tools userscript](https://ud-cis-teaching.github.io/more-canvas-tools/more-canvas-tools.user.js).
 3. You should be prompted to install the extension, which you should do.
+
+# Features
+
+We are always working on new features, but here's what we have so far:
+
+1. [Activity Report](#activity-report): To quickly check recent completion data by students and TAs.
+2. [Limit Section](#limit-section-enrollment): For FERPA compliance.
+3. [Spread Grade](#spread-grade): A particular tool for the speedgrader that replicates grades to other group members (based on email addresses found in the submitted Word document). Mostly only for courses that use Word Documents.
 
 ## Activity Report
 
