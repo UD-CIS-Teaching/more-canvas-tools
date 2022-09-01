@@ -1,7 +1,8 @@
-import { ALWAYS, DOMCONTENTLOADED } from "userscripter/lib/environment";
+import { ALWAYS, DOMCONTENTLOADED, LOAD } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
 import { isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation } from "./canvas/page_checks";
 import { loadUserActivityReport } from "./reports/user_activity";
+import { injectGraderLabel } from "./utilities/grader_label";
 import { injectLimitEnrollmentButton } from "./utilities/limit_enrollment";
 import { injectSpreadGradeButton } from "./utilities/spread_grade";
 
@@ -36,10 +37,20 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
             gradeBox: "#grading-box-extended"
         },
         action: (e) => {
-            console.log(e);
             injectSpreadGradeButton(e.gradeBox);
         },
         deferUntil: DOMCONTENTLOADED
+    }),
+    operation({
+        description: "label who actually graded an assignment",
+        condition: () => isOnSpeedGrader,
+        dependencies: {
+            gradeBox: "#grading-box-extended"
+        },
+        action: (e) => {
+            injectGraderLabel(e.gradeBox);
+        },
+        deferUntil: LOAD
     })
 ];
 

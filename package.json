@@ -8,7 +8,7 @@
     "watch-userscript": "webpack --config .userscripter-temp/webpack.config.js --watch",
     "watch": "npm run clean && npm run build-webpack-config && npm run watch-userscript && npm run clean",
     "clean": "rimraf .userscripter-temp",
-    "predeploy": "npm run build",
+    "predeploy": "set USERSCRIPTER_MODE=production&& set USERSCRIPTER_VERBOSE=true&& npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
