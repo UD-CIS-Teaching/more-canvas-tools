@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         More Canvas Tools
-// @version      0.1.1
+// @version      0.1.2
 // @description  Next generation canvas tools for simplifying your life
 // @author       Austin Cory Bart
 // @match        *://*.instructure.com/*
