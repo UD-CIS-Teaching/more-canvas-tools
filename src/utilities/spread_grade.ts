@@ -61,11 +61,10 @@ async function processAttachment(attachment: SubmissionAttachment): Promise<stri
 
 async function listPartners(emails: string[], assignmentId: number, submission: Submission) {
     const allStudents: User[] = await getAll($.get, `users`, {});
-    console.log(allStudents);
-    const emailMap: Record<string, User> = Object.fromEntries(allStudents.map((u: User) => [u.email, u]));
+    const emailMap: Record<string, User> = Object.fromEntries(allStudents.map((u: User) => [u.email?.toLowerCase(), u]));
     const userIdMap: Record<string, User> = Object.fromEntries(allStudents.map((u: User) => [u.id+"", u]));
     emails.forEach(async (email: string) => {
-        const student = emailMap[email];
+        const student = emailMap[email.toLowerCase()];
         if (!student) {
             $("#spreadGradePartners").append(`<tr><td>${email}</td><td colspan="3">Unknown email address</td></tr>`);
             return;
