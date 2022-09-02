@@ -7,7 +7,8 @@ export interface User {
 
 export type Assignment = {
     id: number,
-    published: boolean
+    published: boolean;
+    rubric: RubricCriterion[];
 }
 
 export enum WorkflowState {
@@ -30,7 +31,21 @@ export interface Submission {
     seconds_late: number,
     excused: boolean,
     workflow_state: WorkflowState,
-    attachments: SubmissionAttachment[] | null
+    attachments: SubmissionAttachment[] | null,
+    full_rubric_assessment?: FullRubricAssessment;
+    submission_comments: Comment[];
+    preview_url: string;
+}
+
+export interface Comment {
+    author: User;
+    author_id: number;
+    author_name: string;
+    avatar_path: string;
+    comment: string;
+    created_at: string;
+    edited_at: string|null;
+    id: number;
 }
 
 export interface SubmissionAttachment {
@@ -46,4 +61,26 @@ export interface SpeedGraderInfo {
     assignmentId: number;
     assignmentTitle: string;
     currentUser: User;
+}
+
+export interface FullRubricAssessment {
+    assessor_id: number;
+    assesor_name: string;
+    data: RubricRating[]
+}
+
+export interface RubricRating {
+    comments: string;
+    comments_enabled: boolean;
+    criterion_id: string;
+    description: string;
+    id: string;
+    points: number;
+}
+
+export interface RubricCriterion {
+    id: string;
+    description: string;
+    long_description: string;
+    points: number;
 }

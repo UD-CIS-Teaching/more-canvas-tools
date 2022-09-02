@@ -63,3 +63,7 @@ In the Speed Grader, a new button is available next to the grade entry box to "S
 
 In theory, a comment should be left on the students' assignment that the grade was transferred, but that may or may not be working. Canvas is confusing.
 
+# Change Log
+
+* 0.1.3: Fixed bug with grades not being copied correctly with Spread Grade feature
+* 0.2.0: Spread Grade now copies the grade AND rubric, and also has an interface for copying comments.
