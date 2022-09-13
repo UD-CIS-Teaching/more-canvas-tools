@@ -230,21 +230,27 @@ async function submitForStudent(studentId: number, assignmentId: number, submiss
         'submission[seconds_late_override]': submission.seconds_late,
     };
     let withRubric = false;
+    let rubricData: Record<string, any> = {};
     if (submission.full_rubric_assessment && submission.full_rubric_assessment.data.length) {
-        withRubric = attachRubricGrade(data, submission.full_rubric_assessment.data);
+        withRubric = attachRubricGrade(rubricData, submission.full_rubric_assessment.data);
     }
     if (submission.late_policy_status) {
         data['submission[late_policy_status]'] = submission.late_policy_status;
     }
     let failed = false;
-    let graded = undefined;
+    let graded = undefined, gradedRubric = undefined;
     try {
+        gradedRubric = await $.ajax({
+            url: `${getBaseCourseUrl()}/assignments/${assignmentId}/submissions/${studentId}`,
+            type: 'put',
+            data: rubricData
+        });
         graded = await $.ajax({
             url: `${getBaseCourseUrl()}/assignments/${assignmentId}/submissions/${studentId}`,
             type: 'put',
             data
         });
-        failed = 'errors' in graded;
+        failed = 'errors' in graded || 'errors' in gradedRubric;
         // Send the rubric scores too
     } catch (e) {
         failed = true;
