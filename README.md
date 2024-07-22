@@ -63,6 +63,48 @@ In the Speed Grader, a new button is available next to the grade entry box to "S
 
 In theory, a comment should be left on the students' assignment that the grade was transferred, but that may or may not be working. Canvas is confusing.
 
+## Development Environment Installation
+
+If you want to develop on this project, you'll need to do the following:
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/UD-CIS-Teaching/more-canvas-tools.git
+```
+
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm watch
+```
+
+4. Follow steps 1-4 of the Setup instructions to load the development version of the script into your browser: <https://stackoverflow.com/a/55568568/1718155>
+
+Here's an example of what my header looks like, note the `@require` line:
+
+```js
+// ==UserScript==
+// @name         Dev More Canvas Tools
+// @version      0.2.1.2024.7.22.12.10
+// @description  Next generation canvas tools for simplifying your life
+// @author       Austin Cory Bart
+// @match        *://*.instructure.com/*
+// @namespace    udcis.canvas
+// @run-at       document-start
+// @grant        none
+// @updateURL    https://ud-cis-teaching.github.io/more-canvas-tools/more-canvas-tools.user.js
+// @downloadURL  https://ud-cis-teaching.github.io/more-canvas-tools/more-canvas-tools.user.js
+// @require      file://C:/Users/acbar/Projects/ud-cis-repo/more-canvas-tools/dist/more-canvas-tools.user.js
+// ==/UserScript==
+```
+
 # Change Log
 
 * 0.1.3: Fixed bug with grades not being copied correctly with Spread Grade feature
