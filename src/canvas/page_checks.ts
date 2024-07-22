@@ -10,6 +10,8 @@ export const isOnSpeedGrader = pathMatches(SITE.PATH.SPEED_GRADER);
 
 export const isOnSubmission = pathMatches(SITE.PATH.SUBMISSION_PAGE);
 
+export const isOnDashboard = document.location.pathname === "/";
+
 export const isOnCanvaDocs = /canvadocs.instructure.com/.test(document.location.hostname);
 
-export const hasLeftNavigation = !isOnSpeedGrader && !isOnCanvaDocs;
+export const hasLeftNavigation = !isOnSpeedGrader && !isOnCanvaDocs && !isOnDashboard;
