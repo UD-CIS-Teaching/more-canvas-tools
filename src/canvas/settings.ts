@@ -11,7 +11,21 @@ export interface CanvasEnv {
     DEEP_LINKING_POST_MESSAGE_ORIGIN: string;
     assignment_id: string;
     assignment_title: string;
+    speed_grader_url: string;
 }
+export function getSpeedGraderUrl(user: string = "", assignment: string = ""): string {
+    const baseUrl = (window as any).ENV.current_context.url + "/gradebook/speed_grader";
+    console.log(baseUrl);
+    const parsed = new URL(baseUrl);
+    if (user) {
+        parsed.searchParams.set("student_id", user);
+    }
+    if (assignment) {
+        parsed.searchParams.set("assignment_id", assignment);
+    }
+    return parsed.toString();
+}
+
 export function getCourse(): string {
     return (window as any).ENV.context_asset_string;
 }
@@ -39,6 +53,14 @@ export function getBaseCourseUrlNoApi(): string {
 export function getSpeedGraderInfo(): SpeedGraderInfo {
     return {
         assignmentId: parseInt((window as any).ENV.assignment_id, 10),
+        assignmentTitle: (window as any).ENV.assignment_title,
+        currentUser: (window as any).ENV.current_user
+    };
+}
+
+export function getAssignmentPageInfo(): SpeedGraderInfo {
+    return {
+        assignmentId: parseInt((window as any).ENV.ASSIGNMENT_ID, 10),
         assignmentTitle: (window as any).ENV.assignment_title,
         currentUser: (window as any).ENV.current_user
     };

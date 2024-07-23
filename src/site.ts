@@ -8,5 +8,6 @@ export const HOSTNAME = U.hostname;
 export const PATH = {
     PEOPLE_PAGE: /courses\/\d+\/users/,
     SPEED_GRADER: /courses\/\d+\/gradebook\/speed_grader/,
+    ASSIGNMENT_PAGE: /courses\/\d+\/(assignments|quizzes)\/\d+/,
     SUBMISSION_PAGE: /courses\/\d+\/assignments\/\d+\/submissions\/\d+/,
 } as const;

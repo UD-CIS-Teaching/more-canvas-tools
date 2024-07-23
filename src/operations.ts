@@ -1,10 +1,11 @@
 import { ALWAYS, DOMCONTENTLOADED, LOAD } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
-import { isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation } from "./canvas/page_checks";
+import { isOnAssignment, isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation } from "./canvas/page_checks";
 import { loadUserActivityReport } from "./reports/user_activity";
 import { injectGraderLabel } from "./utilities/grader_label";
 import { injectLimitEnrollmentButton } from "./utilities/limit_enrollment";
 import { injectSpreadGradeButton } from "./utilities/spread_grade";
+import { injectListUngradedButton } from "./reports/ungraded_report";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
     operation({
@@ -51,6 +52,17 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
             injectGraderLabel(e.gradeBox);
         },
         deferUntil: LOAD
+    }),
+    operation({
+        description: "provide button to list ungraded assignments for TAs",
+        condition: () => isOnAssignment,
+        dependencies: {
+            relatedItemsList: "#sidebar_content .page-action-list"
+        },
+        action: (e) => {
+            injectListUngradedButton(e.relatedItemsList);
+        },
+        deferUntil: DOMCONTENTLOADED
     })
 ];
 
