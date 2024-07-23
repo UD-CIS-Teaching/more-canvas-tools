@@ -63,6 +63,8 @@ In the Speed Grader, a new button is available next to the grade entry box to "S
 
 In theory, a comment should be left on the students' assignment that the grade was transferred, but that may or may not be working. Canvas is confusing.
 
+![image](https://github.com/UD-CIS-Teaching/more-canvas-tools/assets/897227/3f40e61b-4576-4f03-8857-6054f8974050)
+
 ## Development Environment Installation
 
 If you want to develop on this project, you'll need to do the following:
