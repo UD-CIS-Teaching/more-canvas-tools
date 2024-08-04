@@ -22,6 +22,8 @@ We are always working on new features, but here's what we have so far:
 1. [Activity Report](#activity-report): To quickly check recent completion data by students and TAs.
 2. [Limit Section](#limit-section-enrollment): For FERPA compliance.
 3. [Spread Grade](#spread-grade): A particular tool for the speedgrader that replicates grades to other group members (based on email addresses found in the submitted Word document). Mostly only for courses that use Word Documents.
+4. [List Ungraded Submissions](#list-ungraded-submissions): A tool to list all ungraded submissions in a course.
+5. [List Recently Enrolled Users](#list-recently-enrolled-users): A tool to list all users who have recently enrolled in a course.
 
 ## Activity Report
 
@@ -64,6 +66,18 @@ In the Speed Grader, a new button is available next to the grade entry box to "S
 In theory, a comment should be left on the students' assignment that the grade was transferred, but that may or may not be working. Canvas is confusing.
 
 ![image](https://github.com/UD-CIS-Teaching/more-canvas-tools/assets/897227/3f40e61b-4576-4f03-8857-6054f8974050)
+
+## List Ungraded Submissions
+
+A new button is available in the Assignments tab that lets you list all ungraded submissions in the course. This is useful for quickly identifying assignments that need to be graded.
+
+## List Recently Enrolled Users
+
+On the front page of your course, a box will appear on the right hand side that lists all users who have recently enrolled in the course. This is useful for quickly identifying new students who may need special attention. You can adjust the threshold for "recent" enrollment in the settings (leave it blank to get all users).
+
+Users who have been added in the past three days will be marked red and users who have been added in the past five days will be marked yellow.
+
+If you click on a user, it will take you to their User page, which has a link to their grades and submissions.
 
 ## Development Environment Installation
 
@@ -113,3 +127,4 @@ Here's an example of what my header looks like, note the `@require` line:
 * 0.2.0: Spread Grade now copies the grade AND rubric, and also has an interface for copying comments.
 * 0.2.1: Fix spread grade to allow spreading grades different than the rubric
 * 0.3.0: Add feature for listing ungraded submissions
+* 0.4.0: New feature for listing recently enrolled users on course page

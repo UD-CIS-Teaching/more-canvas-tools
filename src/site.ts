@@ -10,4 +10,5 @@ export const PATH = {
     SPEED_GRADER: /courses\/\d+\/gradebook\/speed_grader/,
     ASSIGNMENT_PAGE: /courses\/\d+\/(assignments|quizzes)\/\d+/,
     SUBMISSION_PAGE: /courses\/\d+\/assignments\/\d+\/submissions\/\d+/,
+    COURSE_HOME: /courses\/\d+\/?$/,
 } as const;

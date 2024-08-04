@@ -1,11 +1,12 @@
 import { ALWAYS, DOMCONTENTLOADED, LOAD } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
-import { isOnAssignment, isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation } from "./canvas/page_checks";
+import { isOnAssignment, isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation, isOnCourseHome } from "./canvas/page_checks";
 import { loadUserActivityReport } from "./reports/user_activity";
 import { injectGraderLabel } from "./utilities/grader_label";
 import { injectLimitEnrollmentButton } from "./utilities/limit_enrollment";
 import { injectSpreadGradeButton } from "./utilities/spread_grade";
 import { injectListUngradedButton } from "./reports/ungraded_report";
+import { injectRecentlyEnrolled } from "./reports/recently_enrolled";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
     operation({
@@ -61,6 +62,18 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
         },
         action: (e) => {
             injectListUngradedButton(e.relatedItemsList);
+        },
+        deferUntil: DOMCONTENTLOADED
+    }),
+    operation({
+        description: "list recently added/enrolled users for course",
+        condition: () => isOnCourseHome,
+        dependencies: {
+            sidebar: "#right-side-wrapper"
+        },
+        action: (e) => {
+            console.log("HELLO COURSE HOME", e);
+            injectRecentlyEnrolled(e.sidebar.querySelector("#right-side"));
         },
         deferUntil: DOMCONTENTLOADED
     })

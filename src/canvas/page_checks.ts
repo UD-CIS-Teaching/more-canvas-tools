@@ -12,6 +12,8 @@ export const isOnSubmission = pathMatches(SITE.PATH.SUBMISSION_PAGE);
 
 export const isOnAssignment = pathMatches(SITE.PATH.ASSIGNMENT_PAGE);
 
+export const isOnCourseHome = pathMatches(SITE.PATH.COURSE_HOME);
+
 export const isOnDashboard = document.location.pathname === "/";
 
 export const isOnCanvaDocs = /canvadocs.instructure.com/.test(document.location.hostname);
