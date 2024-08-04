@@ -112,3 +112,4 @@ Here's an example of what my header looks like, note the `@require` line:
 * 0.1.3: Fixed bug with grades not being copied correctly with Spread Grade feature
 * 0.2.0: Spread Grade now copies the grade AND rubric, and also has an interface for copying comments.
 * 0.2.1: Fix spread grade to allow spreading grades different than the rubric
+* 0.3.0: Add feature for listing ungraded submissions

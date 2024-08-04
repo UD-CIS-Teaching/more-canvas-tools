@@ -1,7 +1,7 @@
 export default {
     id: "more-canvas-tools",
     name: "More Canvas Tools",
-    version: "0.2.1",
+    version: "0.3.0",
     description: "Next generation canvas tools for simplifying your life",
     author: "Austin Cory Bart",
     hostname: "*.instructure.com",
