@@ -1,12 +1,13 @@
 import { ALWAYS, DOMCONTENTLOADED, LOAD } from "userscripter/lib/environment";
 import { Operation, operation } from "userscripter/lib/operations";
-import { isOnAssignment, isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation, isOnCourseHome } from "./canvas/page_checks";
+import { isOnAssignment, isOnPeoplePage, isOnSpeedGrader, hasLeftNavigation, isOnCourseHome, hasGlobalNavigation } from "./canvas/page_checks";
 import { loadUserActivityReport } from "./reports/user_activity";
 import { injectGraderLabel } from "./utilities/grader_label";
 import { injectLimitEnrollmentButton } from "./utilities/limit_enrollment";
 import { injectSpreadGradeButton } from "./utilities/spread_grade";
 import { injectListUngradedButton } from "./reports/ungraded_report";
 import { injectRecentlyEnrolled } from "./reports/recently_enrolled";
+import { injectSearchButton } from "./utilities/search_menu";
 
 const OPERATIONS: ReadonlyArray<Operation<any>> = [
     operation({
@@ -27,7 +28,6 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
             addUserButton: "#addUsers"
         },
         action: (e) => {
-            console.log("HELLO EPOPLE", e);
             injectLimitEnrollmentButton();
         },
         deferUntil: DOMCONTENTLOADED
@@ -72,8 +72,18 @@ const OPERATIONS: ReadonlyArray<Operation<any>> = [
             sidebar: "#right-side-wrapper"
         },
         action: (e) => {
-            console.log("HELLO COURSE HOME", e);
             injectRecentlyEnrolled(e.sidebar.querySelector("#right-side"));
+        },
+        deferUntil: DOMCONTENTLOADED
+    }),
+    operation({
+        description: "provide a search button on the global navigation bar",
+        condition: () => hasGlobalNavigation,
+        dependencies: {
+            globalNav: "#header"
+        },
+        action: (e) => {
+            injectSearchButton(e.globalNav.querySelector("#menu"));
         },
         deferUntil: DOMCONTENTLOADED
     })

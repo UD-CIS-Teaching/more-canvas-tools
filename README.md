@@ -127,4 +127,4 @@ Here's an example of what my header looks like, note the `@require` line:
 * 0.2.0: Spread Grade now copies the grade AND rubric, and also has an interface for copying comments.
 * 0.2.1: Fix spread grade to allow spreading grades different than the rubric
 * 0.3.0: Add feature for listing ungraded submissions
-* 0.4.0: New feature for listing recently enrolled users on course page
+* 0.4.0: New feature for listing recently enrolled users on course page. Also super rough prototype of search command.

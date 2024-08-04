@@ -11,4 +11,5 @@ export const PATH = {
     ASSIGNMENT_PAGE: /courses\/\d+\/(assignments|quizzes)\/\d+/,
     SUBMISSION_PAGE: /courses\/\d+\/assignments\/\d+\/submissions\/\d+/,
     COURSE_HOME: /courses\/\d+\/?$/,
+    ALL_COURSES: /courses\/?$/,
 } as const;

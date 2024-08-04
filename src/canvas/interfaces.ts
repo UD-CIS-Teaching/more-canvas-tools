@@ -11,6 +11,25 @@ export type Assignment = {
     rubric: RubricCriterion[];
 }
 
+export interface Course {
+    id: number;
+    calendar: {
+        ics: string;
+    };
+    course_code: string;
+    created_at: string;
+    end_at: string;
+    default_view: string;
+    enrollment_term_id: number;
+    enrollments: any[];
+    is_public: boolean;
+    name: string;
+    sis_course_id: number;
+    start_at: string;
+    time_zone: string;
+    workflow_state: string;
+}
+
 export enum WorkflowState {
     submitted = "submitted",
     unsubmitted = "unsubmitted",
