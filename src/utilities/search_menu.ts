@@ -78,7 +78,8 @@ export const SEARCH_MENU_ITEM = `
 const SEARCH_TYPES_HTML = 
     Object.keys(SEARCHABLE_RESOURCES).map((key) => {
         const shouldSearch = DEFAULT_SEARCHED_ITEMS.includes(key);
-        const attributes = SEARCHABLE_RESOURCES[key].attributes.map((attr) => {
+        const attributes = SEARCHABLE_RESOURCES[key].attributes.map((attrData) => {
+            const attr = typeof attrData === "string" ? attrData : attrData.name;
             return `<li>
                 <label for="search-dialog-attr-${key}-${attr}">
                     <code>${attr}</code>
@@ -101,6 +102,7 @@ const SEARCH_TYPES_HTML =
 
 export const SEARCH_DIALOG_HTML = `
 <div id="search-dialog">
+    <div class="alert alert-info">Sorry, this feature is still in development. It may not work as expected.</div>
     <span>Search for type(s) across courses:</span>
     <div id="builder"></div>
     <div class="row">
