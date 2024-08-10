@@ -1,18 +1,37 @@
 import { startDialog } from "~src/canvas/dialog";
+import { loadJsCssFile } from "~src/canvas/external";
 import { Course } from "~src/canvas/interfaces";
 import { getAll, getAllWithoutCourse, getBaseApiUrl } from "~src/canvas/settings";
 
+export interface SearchableAttribute {
+    name: string;
+    type: "text" | "number" | "date" | "boolean";
+}
+
 export interface SearchableResource {
     name: string;
-    attributes: string[];
+    attributes: (string | SearchableAttribute)[];
 }
+
+export const SEARCHABLE_COURSE_ATTRIBUTES: SearchableAttribute[] = [
+    { name: "course_code", type: "text" },
+    { name: "name", type: "text" },
+    { name: "start_at", type: "date" },
+    { name: "end_at", type: "date" },
+    { name: "term", type: "text" },
+    { name: "published", type: "boolean" },
+    { name: "completed", type: "boolean" }
+];
 
 // TODO: Remember previous searches
 const DEFAULT_SEARCHED_ITEMS = ["pages"];
 export const SEARCHABLE_RESOURCES: Record<string, SearchableResource> = {
     pages: {
         name: "Pages",
-        attributes: ["title", "body"]
+        attributes: [
+            { name: "title", type: "text" },
+            { name: "body", type: "text" }
+        ]
     },
     syllabus: {
         name: "Syllabus",
@@ -82,27 +101,33 @@ const SEARCH_TYPES_HTML =
 
 export const SEARCH_DIALOG_HTML = `
 <div id="search-dialog">
-    <span>Search for type(s):</span>
+    <span>Search for type(s) across courses:</span>
+    <div id="builder"></div>
+    <div class="row">
+        <div class="col-5">
+            <p>Choose courses that match all of these filters:</p>
+            <ul id="search-dialog-course-rules">
+                <li>Name contains 106</li>
+            </ul>
+            <button class="btn btn-primary" id="search-dialog-course-add-rule">Add Filter</button>
+        </div>
+        <div class="col-5">
+            <p>Preview of selected courses:</p>
+            <ul id="search-dialog-course-preview" style="max-height: 10em; overflow-y: auto;">
+                <li>106 - Course Name</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <button class="btn btn-primary" id="search-dialog-course-save">Save course filters</button>
+        </div>
+        <div class="col-5">
+            <button class="btn btn-primary" id="search-dialog-course-load">Load course filters</button>
+        </div>
+    </div>
     <div style="margin-left: 1em" class="row">
         ${SEARCH_TYPES_HTML}
-    </div>
-    <div>
-        <label for="search-dialog-across">Across:</label>
-        <select id="search-dialog-across" class="form-control">
-            <option value="all">All Courses</option>
-            <option value="published" selected>Published Courses</option>
-            <option value="past">Past Courses</option>
-            <option value="current" disabled>Current Course</option>
-            <option value="future">Future Courses</option>
-            <option value="choose">Choose Courses</option>
-        </select>
-        <div class="form-text">Choose which courses to search across.
-            "Published Courses" includes available and completed courses.
-            "Past Courses" includes unpublished courses.
-            "Current Course" is the course you are currently in.
-            "Future Courses" includes courses that have not yet started.
-            "Choose Courses" allows you to select specific courses to search.
-        </div>
     </div>
     <div style="display:none; margin-left: 1em;" id="search-dialog-choose-courses">
         <div>Choose Specific Courses</div>
@@ -173,6 +198,8 @@ export function buildRequest(): SearchRequest {
         if (type.prop("checked")) {
             resources[key] = SEARCHABLE_RESOURCES[key].attributes.filter((attr) => {
                 return $(`#search-dialog-attr-${key}-${attr}`).prop("checked");
+            }).map((attr) => {
+                return attr as string;
             });
         }
     });
@@ -250,6 +277,12 @@ export async function actualSearch(request: SearchRequest): Promise<SearchRespon
 
 function updateSearchStatus(text: string) {
     $("#search-dialog-status").text(text);
+}
+
+declare global {
+    interface JQuery {
+        queryBuilder(options: any): any;
+    }
 }
 
 export async function setupSearch() {

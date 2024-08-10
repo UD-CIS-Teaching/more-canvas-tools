@@ -14,10 +14,12 @@ export const isOnAssignment = pathMatches(SITE.PATH.ASSIGNMENT_PAGE);
 
 export const isOnCourseHome = pathMatches(SITE.PATH.COURSE_HOME);
 
+export const isOnCourseList = pathMatches(SITE.PATH.ALL_COURSES);
+
 export const isOnDashboard = document.location.pathname === "/";
 
 export const isOnCanvaDocs = /canvadocs.instructure.com/.test(document.location.hostname);
 
-export const hasLeftNavigation = !isOnSpeedGrader && !isOnCanvaDocs && !isOnDashboard;
+export const hasLeftNavigation = !isOnSpeedGrader && !isOnCanvaDocs && !isOnDashboard && !isOnCourseList;
 
 export const hasGlobalNavigation = !isOnCanvaDocs;
