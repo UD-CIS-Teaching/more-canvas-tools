@@ -79,6 +79,48 @@ Users who have been added in the past three days will be marked red and users wh
 
 If you click on a user, it will take you to their User page, which has a link to their grades and submissions.
 
+## Search
+
+**SORRY THIS IS NOT DONE YET.**
+
+This is a super rough prototype of a search feature. It's not very good yet, but it's a start. You can click `Search` from the global navigation menu on the left, and then use
+the dialog to search across any assignment type.
+
+## Import/Export Assignment Dates
+
+![Screenshot of Import/Export Assignment Dates](docs/import_export_assignments.png)
+
+On the Assignments page, you can now import and export assignment dates in bulk. This is useful for quickly copying assignment dates from one course to another.
+
+Access this menu by clicking the triple dot menu button in the top-right of the Assignments page, then choosing the "Import/Export Assignment Dates" option.
+
+![How to access the Import/Export Assignment Dates menu](docs/access_import_export_assignments.png)
+
+the "Export to CSV/TSV Side" button will take the current contents of the preview below it and load them into the textarea on the right. Correspondingly, the "Import to Preview Side" button will take the contents of the textarea and load them into the preview on the other side. You can either edit the textarea directly, or use the "Upload from file" button to load a CSV or TSV file from your computer. You can also "Download as file" to save the contents of the textarea to a file.
+
+The format of the CSV/TSV file is as follows:
+
+```csv
+Course,1234
+Assignment,ID,Available,Due,Lock
+First Assignment,12345,2024-09-01T03:59:59Z,2024-09-01T03:59:59Z,2024-09-01T03:59:59Z
+Second Assignment,67890,2024-09-01T03:59:59Z,,
+```
+
+You can actually have more than one course in the file, in which case only the currently active course will be read.
+
+```csv
+Course,,1234,,,5678,,
+Assignment,ID,Available,Due,Lock,Available,Due,Lock
+First Assignment,12345,2024-09-01T03:59:59Z,,,2024-09-01T03:59:59Z,,
+```
+
+You can adjust the delimiter and quote for how the file is generated, but that should not affect the parser; I believe it will intelligently handle either CSV or TSV files, but I have not confirmed this.
+
+The `Save Draft` and `Load Draft` buttons allow you to store/restore the current version of the **PREVIEW AREA** (not the textarea) in your localStorage. This is useful for saving your work in progress, if you need to come back to it later.
+
+Finally, the `Preview and Publish Dates to Course` button will take the contents of the preview area and check how they will be applied to this course. It will show you a list of assignments that will be updated, and then you can click the `Apply Changes` button to actually apply the changes. This will update the assignments in the course with the new dates. Or you can click `Cancel Changes` to go back to editing the dates.
+
 ## Development Environment Installation
 
 If you want to develop on this project, you'll need to do the following:

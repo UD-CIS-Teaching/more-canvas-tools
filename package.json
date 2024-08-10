@@ -18,6 +18,8 @@
     "@types/jquery": "^3.5.14",
     "@types/jqueryui": "^1.12.16",
     "app-root-path": "^3.0.0",
+    "csv": "^6.3.10",
+    "dateformat": "^5.0.3",
     "gh-pages": "^4.0.0",
     "jszip": "^3.10.0",
     "rimraf": "^3.0.2",
@@ -27,5 +29,8 @@
     "userscripter": "^1.1.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
+  },
+  "devDependencies": {
+    "@types/dateformat": "^5.0.2"
   }
 }

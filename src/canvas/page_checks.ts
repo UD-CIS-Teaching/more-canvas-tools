@@ -12,6 +12,8 @@ export const isOnSubmission = pathMatches(SITE.PATH.SUBMISSION_PAGE);
 
 export const isOnAssignment = pathMatches(SITE.PATH.ASSIGNMENT_PAGE);
 
+export const isOnAssignmentList = pathMatches(SITE.PATH.ASSIGNMENT_LIST);
+
 export const isOnCourseHome = pathMatches(SITE.PATH.COURSE_HOME);
 
 export const isOnCourseList = pathMatches(SITE.PATH.ALL_COURSES);
