@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "More Canvas Tools",
+  "version": "0.5.1",
+  "description": "Next generation canvas tools for simplifying your life",
+  "author": "Austin Cory Bart",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.instructure.com/*",
+        "*://www.*.instructure.com/*"
+      ],
+      "js": [
+        "more-canvas-tools.user.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
