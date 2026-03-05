@@ -122,6 +122,34 @@ The `Save Draft` and `Load Draft` buttons allow you to store/restore the current
 
 Finally, the `Preview and Publish Dates to Course` button will take the contents of the preview area and check how they will be applied to this course. It will show you a list of assignments that will be updated, and then you can click the `Apply Changes` button to actually apply the changes. This will update the assignments in the course with the new dates. Or you can click `Cancel Changes` to go back to editing the dates.
 
+## Shortcuts menu
+Welcome to Canvas Shortcuts!
+
+Ever have to look through your professor’s Canvas modules to find something you need only to have it in a random space because everyone organizes differently? Or maybe, your bookmarks tab is too flooded to make bookmarks for every important resource in your Canvas?
+
+In this extension, you’ll be able to do the following -
+
+Create a Canvas shortcut by inputting a link and a name for your shortcut
+Access the link even when you refresh the page
+Click on links to take you to the page
+Have your links organized in a menu
+
+On any canvas page you will be able to create a bookmark, as well as navigate straight to that URL through the bookmark from now on. 
+<img width="1796" height="853" alt="image" src="https://github.com/user-attachments/assets/3204f8f4-5cd0-4973-b6b9-bc07127efd2d" />
+
+Just use this shortcuts menu, click the add shortcuts menu, then it will open a popup for creating bookmarks.
+Insert the name and URL of the bookmark and click create bookmark. 
+<img width="338" height="591" alt="image" src="https://github.com/user-attachments/assets/26f22772-290a-452c-a3df-2a2b9deba9c8" />
+
+You'll then be able to navigate back to that page through the bookmark and won't have to worry about getting lost on you way to a file or assignment. 
+
+For future updates, we plan to implement the following
+Delete a Shortcut
+Close the menu that makes you implement shortcuts
+Minimize and maximize the Shortcuts menu
+
+
+
 ## Development Environment Installation
 
 If you want to develop on this project, you'll need to do the following:
